@@ -1,5 +1,5 @@
 import NavigationBar from "./NavigationBar"
-import classes from "../style/layout.css"
+import classes from './Layout.module.css'
 
 const Layout = (props) => {
     return (

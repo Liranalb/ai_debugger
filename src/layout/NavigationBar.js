@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-import classes from '../style/navigationBar.css'
+import classes from './NavigationBar.module.css'
 import config from '../strings/navigationBarStr.json'
 
 const NavigationBar = () => {
