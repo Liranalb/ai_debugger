@@ -1,5 +1,5 @@
 const inputBox = () => {
-    <text>test</text>
+    return <text>test</text>
 }
 
 export default inputBox;

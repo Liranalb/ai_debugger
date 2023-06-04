@@ -1,5 +1,5 @@
 const submitButton = () => {
-    <button>Submit</button>
+    return <button>Submit</button>
 }
 
 export default submitButton
