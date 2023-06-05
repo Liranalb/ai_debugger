@@ -1,21 +1,26 @@
 .header {
-  width: 85%;
+  width: 80%;
   height: 5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #ff6d60;
+  background-color: #27374D;
   padding: 0 10%;
+  font: 1.3rem Inconsolata, monospace;
+  background-image: radial-gradient(
+    #27374D, black 120%
+  );
+  text-shadow: 0 0 5px #C8C8C8;
 }
 
 .logo {
   font-size: 2rem;
-  color: #f3e99f;
+  color: #DDE6ED;
   font-weight: bold;
 }
 
 .header ul {
-  color: #f3e99f;
+  color: #DDE6ED;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -29,14 +34,15 @@
 
 .header a {
   text-decoration: none;
-  font-size: 1.5rem;
-  color: #f3e99f;
+  color: #9DB2BF;
+  font: 1.3rem Inconsolata, monospace;
+  
 }
 
 .header a:hover,
 .header a:active,
 .header a.active {
-  color: #f7d060;
+  color: #DDE6ED;
 }
 
 .badge {
