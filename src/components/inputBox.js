@@ -1,5 +1,9 @@
+import classes from './InputBox.module.css'
+
 const inputBox = () => {
-    return <text>test</text>
+    return (
+        <textarea className={ classes.inputbox }></textarea>
+    );
 }
 
 export default inputBox;

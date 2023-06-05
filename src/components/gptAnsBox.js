@@ -1,5 +1,5 @@
 const gptAnswerBox = () => {
-    return <text></text>
+    return <textarea></textarea>
 }
 
 export default gptAnswerBox;

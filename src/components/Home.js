@@ -1,15 +1,15 @@
 import InputBox from './InputBox';
 import GptAnsBox from './GptAnsBox';
 import SubmitEventBtn from './SubmitBtn';
+import Card from '../ui/Card';
 
 const Home = () => {
     return (
-    <div>
         <form>
-            
+            <Card>
+                    <InputBox />
+            </Card>
         </form>
-    </div>
-    
     );
 
 }
