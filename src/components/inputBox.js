@@ -1,9 +1,9 @@
 import classes from './InputBox.module.css'
-import strings from '../strings/inputBoxStr.json'
-const inputBox = () => {
+
+const InputBox = ({ id, placeholder }) => {
     return (
-        <textarea className={ classes.inputbox } placeholder={strings.placeHolderCode} ></textarea>
+        <textarea className={ classes.inputbox } id={id} placeholder={ placeholder }></textarea>
     );
 }
 
-export default inputBox;
+export default InputBox;

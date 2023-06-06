@@ -1,0 +1,18 @@
+{
+  "navbar": {
+    "title": "AI Debugger",
+    "links": {
+      "about": "/about",
+      "github_address": "https://github.com/Liranalb",
+      "linkedin_address": "https://www.linkedin.com/in/liran-alboher/"
+    }
+  },
+
+  "inputBox": {
+    "placeHolderCode": "Enter your code here...",
+    "placeHolderLogs": "Enter your error logs here...",
+    "placeHolderGPT": "GPT Answer"
+  },
+
+  "submitButton": "Submit Code and Logs To GPT-4"
+}

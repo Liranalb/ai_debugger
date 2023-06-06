@@ -1,9 +1,9 @@
 import classes from './SubmitBtn.module.css'
 
-const SubmitButton = () => {
+const SubmitButton = ({buttonText}) => {
     return (
         <div className={classes.center}>
-            <button className={classes.button}>Submit Code and Logs To GPT-4</button>
+            <button className={classes.button}>{buttonText}</button>
         </div>
     );
 
