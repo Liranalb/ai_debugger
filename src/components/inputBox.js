@@ -6,4 +6,5 @@ const InputBox = ({ id, placeholder }) => {
     );
 }
 
+
 export default InputBox;
