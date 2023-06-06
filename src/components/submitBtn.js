@@ -1,9 +1,9 @@
 import classes from './SubmitBtn.module.css'
 
-const SubmitButton = ({buttonText}) => {
+const SubmitButton = ({buttonText, id}) => {
     return (
         <div className={classes.center}>
-            <button className={classes.button}>{buttonText}</button>
+            <button className={classes.button} id={id}>{buttonText}</button>
         </div>
     );
 
