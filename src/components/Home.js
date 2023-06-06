@@ -1,17 +1,20 @@
 import InputBox from './InputBox';
-import GptAnsBox from './GptAnsBox';
-import SubmitEventBtn from './SubmitBtn';
+import SubmitButton from './SubmitBtn';
+import Card from '../ui/Card';
+import strings from '../strings/strings_eng.json'
 
 const Home = () => {
     return (
-    <div>
         <form>
-            
+            <Card>
+                <InputBox id="input_code" placeholder={strings.inputBox.placeHolderCode} />
+            </Card>
+            <Card>
+                <InputBox id="input_logs" placeholder={strings.inputBox.placeHolderLogs} />
+            </Card>
+            <SubmitButton id="submit_button" buttonText={strings.submitButton}/>
         </form>
-    </div>
-    
     );
-
 }
 
 export default Home;
