@@ -11,8 +11,7 @@ const Home = () => {
             </Card>
             <Card>
                 <InputBox />
-            </Card>
-            
+            </Card>     
             <SubmitButton />
         </form>
     );
