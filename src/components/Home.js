@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import InputBox from './InputBox';
+import ResponseBox from './ResponseBox';
 import SubmitButton from './SubmitBtn';
 import Card from '../ui/Card';
 import strings from '../strings/strings_eng.json';
@@ -9,9 +10,11 @@ const Home = () => {
   const [code, setCode] = useState('');
   const [logs, setLogs] = useState('');
   const [response, setResponse] = useState('');
+  const responseCardRef = useRef('');
 
   const submitHandler = (event) => {
     event.preventDefault();
+
     fetch(api_data.api_address, {
       method: 'POST',
       headers: {
@@ -21,12 +24,23 @@ const Home = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        setResponse(data.response);
+        setResponse(data);
         console.log(data);
       })
       .catch((error) => {
         console.error('Error:', error);
       });
+  };
+
+  useEffect(() => {
+    scrollToResponse();
+  }, [response]);
+
+  const scrollToResponse = () => {
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: 'smooth',
+    });
   };
 
   return (
@@ -48,7 +62,12 @@ const Home = () => {
         />
       </Card>
       <SubmitButton id="submit_button" buttonText={strings.submitButton} />
-      <div>{response}</div>
+
+      {response && (
+        <Card ref={responseCardRef}>
+          <ResponseBox value={response.id} />
+        </Card>
+      )}
     </form>
   );
 };
