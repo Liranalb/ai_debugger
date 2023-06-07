@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import InputBox from './InputBox';
 import SubmitButton from './SubmitBtn';
 import Card from '../ui/Card';
-import strings from '../strings/strings_eng.json'
-import api_data from '../config/api_config.json'
+import strings from '../strings/strings_eng.json';
+import api_data from '../config/api_config.json';
 
 const Home = () => {
   const [code, setCode] = useState('');
@@ -51,6 +51,6 @@ const Home = () => {
       <div>{response}</div>
     </form>
   );
-}
+};
 
 export default Home;
