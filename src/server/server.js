@@ -1,35 +1,36 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-
 const app = express();
 const port = 3000;
 
 app.use(bodyParser.json());
 
 const promptGenerator = (code, logs) => {
-    console.log("Building a prompt from the code and logs");
+    return "Building a prompt from the code and logs";
 };
 
 const promptResponse = (generatedPrompt) => {
-    console.log('Sends the prompt to gpt api');
+    return 'Sends the prompt to gpt api';
 };
 
-const responseData = (promptResponse) => {
-    console.log('parse response object before sending it back');
+const pasrseResponse = (promptResponse) => {
+    return 'parse response object before sending it back';
 };
 
-app.post('/', (req, res) => {
+app.get('/', (req, res) => {
+    res.send('Hi!')
+})
+
+app.post('/post', (req, res) => {
     const { code, logs } = req.body;
-
-    const generatedPrompt = promptGenerator(code, logs);
-    const promptResponse = promptHandler(generatedPrompt);
-    const responseData = promptHandler(promptResponse);
+    const prompt = promptGenerator(code, logs);
+    const gptResponse = promptResponse(prompt);
+    const responsData = pasrseResponse(gptResponse);
 
     const response = {
-        responseData,
-        createdAt: new Date().toISOString(),
+        response: responsData,
+        createdAt: new Date().toISOString()
     };
-
     res.json(response);
 });
 
