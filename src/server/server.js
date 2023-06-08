@@ -1,9 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors')
 const app = express();
 const port = 3000;
 
 app.use(bodyParser.json());
+app.use(cors())
 
 const promptGenerator = (code, logs) => {
     return "Building a prompt from the code and logs";
@@ -14,7 +16,7 @@ const promptResponse = (generatedPrompt) => {
 };
 
 const pasrseResponse = (promptResponse) => {
-    return 'parse response object before sending it back';
+    return 'This is a parsed response from the backend...';
 };
 
 app.get('/', (req, res) => {
