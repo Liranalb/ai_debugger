@@ -24,16 +24,25 @@ app.get('/', (req, res) => {
 })
 
 app.post('/post', (req, res) => {
-    const { code, logs } = req.body;
-    const prompt = promptGenerator(code, logs);
-    const gptResponse = promptResponse(prompt);
-    const responsData = pasrseResponse(gptResponse);
+    try {
+        const { code, logs } = req.body;
+        const prompt = promptGenerator(code, logs);
+        const gptResponse = promptResponse(prompt);
+        const responsData = pasrseResponse(gptResponse);
 
-    const response = {
-        response: responsData,
-        createdAt: new Date().toISOString()
-    };
-    res.json(response);
+        const response = {
+            response: responsData,
+            createdAt: new Date().toISOString()
+        };
+        res.json(response);
+    } catch (error) {
+        next(error);
+    }
+});
+
+app.use((err, req, res, next) => {
+    console.error(err);
+    res.status(500).json({ error: 'Internal Server Error' });
 });
 
 app.listen(port, () => {
