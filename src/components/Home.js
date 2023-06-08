@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import InputBox from './InputBox';
 import ResponseBox from './ResponseBox';
 import SubmitButton from './SubmitBtn';
@@ -10,8 +10,7 @@ const Home = () => {
   const [code, setCode] = useState('');
   const [logs, setLogs] = useState('');
   const [response, setResponse] = useState('');
-  const responseCardRef = useRef('');
-
+  
   const submitHandler = (event) => {
     event.preventDefault();
 
@@ -20,12 +19,11 @@ const Home = () => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ code, logs }),
+      body: JSON.stringify({ code, logs })
     })
       .then((response) => response.json())
       .then((data) => {
-        setResponse(data);
-        console.log(data);
+        setResponse(data.response);
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -64,8 +62,8 @@ const Home = () => {
       <SubmitButton id="submit_button" buttonText={strings.submitButton} />
 
       {response && (
-        <Card ref={responseCardRef}>
-          <ResponseBox value={response.id} />
+        <Card>
+          <ResponseBox value={response} />
         </Card>
       )}
     </form>

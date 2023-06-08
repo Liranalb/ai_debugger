@@ -5,6 +5,7 @@ const ResponseBox = ({value}) => {
   return (
     <textarea
       className={classes.inputbox}
+      readOnly 
       value={value}
     ></textarea>
   );
