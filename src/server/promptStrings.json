@@ -4,6 +4,6 @@
         "stackOverflow": "I want you to act like stackoverflow. I will ask you questions about code, just give me the code. Do not try to explain the code."
     },
 
-    "preCodePrompt": "\nThis is my code\n",
-    "preLogPrompt": "My logs:\n"
+    "preCodePrompt": "\nMy code:\n",
+    "preLogPrompt": "\nMy logs:\n"
 }

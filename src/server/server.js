@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const prompts = require('./promptStrings.json');
 
 const app = express();
 const port = 3000;
@@ -9,7 +10,10 @@ app.use(bodyParser.json());
 app.use(cors());
 
 const promptGenerator = (code, logs) => {
-    return "Building a prompt from the code and logs";
+    if(!code || !logs)
+        throw new Error("Code or Logs cannot be empty!");
+    const prompt = prompts.act.senior.concat(prompts.preCodePrompt, code, prompts.preLogPrompt, logs); 
+    return prompt;
 };
 
 const promptResponse = (generatedPrompt) => {
@@ -24,7 +28,7 @@ app.get('/', (req, res) => {
     res.send('Hi!')
 })
 
-app.post('/post', (req, res) => {
+app.post('/post', (req, res, next) => {
     try {
         const { code, logs } = req.body;
         const prompt = promptGenerator(code, logs);
@@ -41,7 +45,7 @@ app.post('/post', (req, res) => {
     }
 });
 
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
     console.error(err);
     res.status(500).json({ error: 'Internal Server Error' });
 });
