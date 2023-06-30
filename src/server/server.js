@@ -20,7 +20,7 @@ const promptResponse = (generatedPrompt) => {
     return 'Sends the prompt to GPT API';
 };
 
-const pasrseResponse = (promptResponse) => {
+const parseResponse = (promptResponse) => {
     return 'This is a parsed response from the backend...';
 };
 
@@ -33,7 +33,7 @@ app.post('/post', (req, res, next) => {
         const { code, logs } = req.body;
         const prompt = promptGenerator(code, logs);
         const gptResponse = promptResponse(prompt);
-        const responseData = pasrseResponse(gptResponse);
+        const responseData = parseResponse(gptResponse);
 
         const response = {
             response: responseData,
