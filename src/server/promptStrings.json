@@ -1,0 +1,9 @@
+{
+    "act": {
+        "senior": "I want you to act as  a senior programmer and you are explaining this code to a junior programmer.",
+        "stackOverflow": "I want you to act like stackoverflow. I will ask you questions about code, just give me the code. Do not try to explain the code."
+    },
+
+    "preCodePrompt": "\nThis is my code\n",
+    "preLogPrompt": "My logs:\n"
+}
