@@ -1,22 +1,42 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const cors = require('cors');
-const prompts = require('./promptStrings.json');
+const bodyParser = require('body-parser');
+const config = require('./serverConfig.json');
+import { Configuration, OpenAIApi } from "openai";
 
 const app = express();
-const port = 3000;
+const port = 3001;
+
+const configuration = new Configuration({
+    organization: "org-RnFy7RyvMiqJIRJDafa00ABl",
+    apiKey: process.env.OPENAI_API_KEY,
+});
 
 app.use(bodyParser.json());
 app.use(cors());
 
 const promptGenerator = (code, logs) => {
-    if(!code || !logs)
+    if (!code || !logs)
         throw new Error("Code or Logs cannot be empty!");
-    const prompt = prompts.act.senior.concat(prompts.preCodePrompt, code, prompts.preLogPrompt, logs); 
+    const prompt = config.act.senior.concat(config.preCodePrompt, code, config.preLogPrompt, logs);
     return prompt;
 };
 
-const postPrompt = (prompt) => {
+const postPrompt = async (prompt) => {
+    const configuration = new Configuration({
+        apiKey: process.env.OPENAI_API_KEY,
+    });
+    const openai = new OpenAIApi(configuration);
+
+    const response = await openai.createCompletion({
+        model: config.gpt.model,
+        temperature: config.gpt.temperature,
+        max_tokens: config.gpt.max_tokens,
+        top_p: config.gpt.top_p,
+        frequency_penalty: config.gpt.frequency_penalty,
+        presence_penalty: config.gpt.presence_penalty,
+    });
+
     return 'Sends the prompt to GPT API';
 };
 
