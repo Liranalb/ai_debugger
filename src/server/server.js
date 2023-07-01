@@ -39,11 +39,11 @@ const parseResponse = (promptResponse) => {
     return 'This is a parsed response from the backend...';
 };
 
-app.post('/post', (req, res, next) => {
+app.post('/post', async (req, res, next) => {
     try {
         const { code, logs } = req.body;
         const prompt = promptGenerator(code, logs);
-        const gptResponse = postPrompt(prompt);
+        const gptResponse = await postPrompt(prompt);
         const parsedResponse = parseResponse(gptResponse);
 
         const response = {
