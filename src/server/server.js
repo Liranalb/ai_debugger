@@ -2,15 +2,10 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const config = require('./serverConfig.json');
-import { Configuration, OpenAIApi } from "openai";
+const { Configuration, OpenAIApi } = require("openai");
 
 const app = express();
 const port = 3001;
-
-const configuration = new Configuration({
-    organization: "org-RnFy7RyvMiqJIRJDafa00ABl",
-    apiKey: process.env.OPENAI_API_KEY,
-});
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -37,26 +32,22 @@ const postPrompt = async (prompt) => {
         presence_penalty: config.gpt.presence_penalty,
     });
 
-    return 'Sends the prompt to GPT API';
+    return response;
 };
 
 const parseResponse = (promptResponse) => {
     return 'This is a parsed response from the backend...';
 };
 
-app.get('/', (req, res) => {
-    res.send('Hi!')
-})
-
 app.post('/post', (req, res, next) => {
     try {
         const { code, logs } = req.body;
         const prompt = promptGenerator(code, logs);
         const gptResponse = postPrompt(prompt);
-        const responseData = parseResponse(gptResponse);
+        const parsedResponse = parseResponse(gptResponse);
 
         const response = {
-            response: responseData,
+            response: parsedResponse,
             createdAt: new Date().toISOString()
         };
         res.json(response);
