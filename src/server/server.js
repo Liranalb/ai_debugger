@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const config = require('./serverConfig.json');
+require('dotenv').config();
+
 const { Configuration, OpenAIApi } = require("openai");
 
 const app = express();
