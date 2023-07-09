@@ -5,7 +5,7 @@ const config = require('./serverConfig.json');
 const { Configuration, OpenAIApi } = require("openai");
 
 const app = express();
-const port = 3001;
+const port = config.PORT;
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -13,7 +13,7 @@ app.use(cors());
 const promptGenerator = (code, logs) => {
     if (!code || !logs)
         throw new Error("Code or Logs cannot be empty!");
-    const prompt = config.act.senior.concat(config.preCodePrompt, code, config.preLogPrompt, logs);
+    const prompt = config.ACT.SENIOR.concat(config.PRE_CODE_PROMPT, code, config.PRE_LOG_PROMPT, logs);
     return prompt;
 };
 
@@ -24,12 +24,12 @@ const postPrompt = async (prompt) => {
     const openai = new OpenAIApi(configuration);
 
     const response = await openai.createCompletion({
-        model: config.gpt.model,
-        temperature: config.gpt.temperature,
-        max_tokens: config.gpt.max_tokens,
-        top_p: config.gpt.top_p,
-        frequency_penalty: config.gpt.frequency_penalty,
-        presence_penalty: config.gpt.presence_penalty,
+        model: config.GPT.MODEL,
+        temperature: config.GPT.TEMPERATURE,
+        max_tokens: config.GPT.MAX_TOKENS,
+        top_p: config.GPT.TOP_P,
+        frequency_penalty: config.GPT.FREQUENCY_PENALTY,
+        presence_penalty: config.GPT.PRESENCE_PENALTY,
     });
 
     return response;
