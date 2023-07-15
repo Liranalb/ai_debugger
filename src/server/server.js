@@ -1,21 +1,19 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const config = require('./serverConfig.json');
+const config = require('./apiReqConfig.json');
+const { Configuration, OpenAIApi } = require("openai");
 require('dotenv').config();
 
-const { Configuration, OpenAIApi } = require("openai");
-
 const app = express();
-const port = config.PORT;
-
 app.use(bodyParser.json());
 app.use(cors());
 
+const port = process.env.DEV_PORT;
 const promptGenerator = (code, logs) => {
     if (!code || !logs)
         throw new Error("Code or Logs cannot be empty!");
-    const prompt = config.ACT.SENIOR.concat(config.PRE_CODE_PROMPT, code, config.PRE_LOG_PROMPT, logs);
+    const prompt = config.ACT.STEP_BY_STEP.concat(config.PRE_CODE_PROMPT, code, config.PRE_LOG_PROMPT, logs);
     return prompt;
 };
 
@@ -27,7 +25,7 @@ const postPrompt = async (prompt) => {
 
     const response = await openai.createChatCompletion({
         model: config.GPT.MODEL,
-        messages: [{"role":"user","content":prompt}],
+        messages: [{"role":config.ROLE,"content":prompt}],
         temperature: config.GPT.TEMPERATURE,
         max_tokens: config.GPT.MAX_TOKENS,
         top_p: config.GPT.TOP_P,
