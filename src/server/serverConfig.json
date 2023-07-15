@@ -1,12 +1,12 @@
 {
     "PORT": 3001,
     "ACT": {
-        "SENIOR": "Act as  a senior programmer and you are explaining this code to a junior programmer.",
-        "STACKOVERFLOW": "Act like stackoverflow. I will ask you questions about code, just give me the code. Do not try to explain the code."
+        "SENIOR": "Explain how to fix this code. Show step by step. Dont show fixed code",
+        "STACKOVERFLOW": ""
     },
 
     "GPT": {
-        "MODEL": "text-davinci-003",
+        "MODEL": "gpt-3.5-turbo",
         "TEMPERATURE": 0,
         "MAX_TOKENS": 1000,
         "TOP_P": 1.0,

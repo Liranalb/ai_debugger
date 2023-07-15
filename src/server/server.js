@@ -25,20 +25,17 @@ const postPrompt = async (prompt) => {
     });
     const openai = new OpenAIApi(configuration);
 
-    const response = await openai.createCompletion({
+    const response = await openai.createChatCompletion({
         model: config.GPT.MODEL,
+        messages: [{"role":"user","content":prompt}],
         temperature: config.GPT.TEMPERATURE,
         max_tokens: config.GPT.MAX_TOKENS,
         top_p: config.GPT.TOP_P,
         frequency_penalty: config.GPT.FREQUENCY_PENALTY,
         presence_penalty: config.GPT.PRESENCE_PENALTY,
-    });
+    }); 
 
-    return response;
-};
-
-const parseResponse = (promptResponse) => {
-    return 'This is a parsed response from the backend...';
+    return response.data.choices[0].message.content;
 };
 
 app.post('/post', async (req, res, next) => {
@@ -46,10 +43,9 @@ app.post('/post', async (req, res, next) => {
         const { code, logs } = req.body;
         const prompt = promptGenerator(code, logs);
         const gptResponse = await postPrompt(prompt);
-        const parsedResponse = parseResponse(gptResponse);
 
         const response = {
-            response: parsedResponse,
+            response: gptResponse,
             createdAt: new Date().toISOString()
         };
         res.json(response);
