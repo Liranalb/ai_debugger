@@ -1,9 +1,8 @@
 {
-    "PORT": 3001,
     "ACT": {
-        "SENIOR": "Explain how to fix this code. Show step by step. Dont show fixed code",
-        "STACKOVERFLOW": ""
+        "STEP_BY_STEP": "Explain how to fix this code. Show step by step. Dont show fixed code"
     },
+    "ROLE": "user",
 
     "GPT": {
         "MODEL": "gpt-3.5-turbo",
