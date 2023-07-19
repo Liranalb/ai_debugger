@@ -46,6 +46,7 @@ const Home = () => {
       <Card>
         <InputBox
           id="input_code"
+          data-testid="input_code"
           placeholder={strings.inputBox.placeHolderCode}
           value={code}
           onChange={(event) => setCode(event.target.value)}
@@ -54,12 +55,13 @@ const Home = () => {
       <Card>
         <InputBox
           id="input_logs"
+          data-testid="input_logs"
           placeholder={strings.inputBox.placeHolderLogs}
           value={logs}
           onChange={(event) => setLogs(event.target.value)}
         />
       </Card>
-      <SubmitButton id="submit_button" buttonText={strings.submitButton} />
+      <SubmitButton id="submit_button" data-testid="submit_button" buttonText={strings.submitButton} />
 
       {response && (
         <Card>
