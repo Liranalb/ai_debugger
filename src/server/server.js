@@ -53,7 +53,7 @@ app.post('/post', async (req, res) => {
         res.json(response);
     } catch (error) {
         console.error(error);
-        const errorMessage = "Something when wrong...\n";
+        const errorMessage = "Something went wrong...\n";
         const response = {
             response: errorMessage + error,
             createdAt: new Date().toISOString()
