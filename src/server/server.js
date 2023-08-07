@@ -36,9 +36,13 @@ const postPrompt = async (prompt) => {
     return response.data.choices[0].message.content;
 };
 
-app.post('/post', async (req, res, next) => {
+app.post('/post', async (req, res) => {
     try {
         const { code, logs } = req.body;
+        if (!code || !logs) {
+            throw new Error("Code or Logs cannot be empty!");
+        }
+
         const prompt = promptGenerator(code, logs);
         const gptResponse = await postPrompt(prompt);
 
@@ -48,11 +52,17 @@ app.post('/post', async (req, res, next) => {
         };
         res.json(response);
     } catch (error) {
-        next(error);
+        console.error(error);
+        const errorMessage = "Something when wrong...\n";
+        const response = {
+            response: errorMessage + error,
+            createdAt: new Date().toISOString()
+        };
+        res.status(500).json(response);
     }
 });
 
-app.use((err, req, res) => {
+app.use((err, req, res, next) => {
     console.error(err);
     res.status(500).json({ error: 'Internal Server Error' });
 });
