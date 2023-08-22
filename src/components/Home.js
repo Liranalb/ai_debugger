@@ -1,19 +1,26 @@
 import React, { useState, useEffect } from 'react';
+
+// Import custom components
 import InputBox from './InputBox';
 import ResponseBox from './ResponseBox';
 import SubmitButton from './SubmitBtn';
 import Card from '../ui/Card';
+
+// Import strings and API configuration
 import strings from '../strings/strings_eng.json';
 import api_data from '../config/api_config.json';
 
 const Home = () => {
+  // States to manage input values and API response
   const [code, setCode] = useState('');
   const [logs, setLogs] = useState('');
   const [response, setResponse] = useState('');
-  
+
+  // Handles form submission
   const submitHandler = (event) => {
     event.preventDefault();
 
+    // Post code and logs to server
     fetch(api_data.api_address, {
       method: 'POST',
       headers: {
@@ -30,6 +37,7 @@ const Home = () => {
       });
   };
 
+  // Scroll to the response when it changes
   useEffect(() => {
     scrollToResponse();
   }, [response]);
@@ -61,6 +69,7 @@ const Home = () => {
       </Card>
       <SubmitButton id="submit_button" buttonText={strings.submitButton} />
 
+      {/* Display the response if available */}
       {response && (
         <Card>
           <ResponseBox value={response} />
