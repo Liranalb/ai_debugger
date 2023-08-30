@@ -49,7 +49,7 @@ describe('Home Component Tests', () => {
     );
 
     // Check if the response is displayed on the screen
-    expect(screen.getByText('Mocked API response')).toBeInTheDocument();
+    expect(screen.getByText('Mocked API response')).toBeInTheDocument;
   });
 });
 
