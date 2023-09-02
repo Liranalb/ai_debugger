@@ -7,8 +7,8 @@ const promptGenerator = (code, logs) => {
         throw new Error("Code or Logs cannot be empty!");
 
     // Concatenate prompts from configuration string and user inputs
-    const prompt = config.ACT.STEP_BY_STEP.concat(config.PRE_CODE_PROMPT, code, config.PRE_LOG_PROMPT, logs);
-    return prompt;
+    return config.ACT.STEP_BY_STEP.concat(config.PRE_CODE_PROMPT, code, config.PRE_LOG_PROMPT, logs);
+    
 };
 
 // Send a prompt to OpenAI and get a completion

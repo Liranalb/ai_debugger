@@ -3,14 +3,13 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const { promptGenerator, postPrompt } = require('./serverUtils');
 require('dotenv').config(); // Load environment variables from a .env file
-
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
 const port = process.env.DEV_PORT || 3001; // Get port from environment variables
 
-app.post('/post', async (req, res) => {
+app.post('/post', async (req, res, next) => {
     try {
         const { code, logs } = req.body;
         const prompt = promptGenerator(code, logs); // Generate the prompt for OpenAI
@@ -30,12 +29,19 @@ app.post('/post', async (req, res) => {
         };
         res.status(500).json(response);
         next(error);
-    }
+    }   
 });
 
 app.use((err, req, res, next) => {
     console.error(err);
-    res.status(500).json({ error: 'Internal Server Error' });
+    const errorMessage = "Internal Server Error";
+    const response = {
+        error: {
+            message: errorMessage,
+            details: err.message
+        }
+    };
+    res.status(500).json(response);
 });
 
 app.listen(port, () => {
