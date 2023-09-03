@@ -15,7 +15,8 @@ describe('Home Component Tests', () => {
 
     // Mock the fetch API to return the mockResponse
     jest.spyOn(global, 'fetch').mockResolvedValue({
-      json: jest.fn().mockResolvedValue(mockResponse)
+      ok: true,
+      json: () => Promise.resolve(mockResponse),
     });
 
     render(<Home />);
