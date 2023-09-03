@@ -21,27 +21,14 @@ app.post('/post', async (req, res, next) => {
         };
         res.json(response);
     } catch (error) {
-        console.error(error);
-        const errorMessage = "Something went wrong...\n";
-        const response = { // The error message will be sent back to the user
-            response: errorMessage + error,
-            createdAt: new Date().toISOString()
-        };
-        res.status(500).json(response);
         next(error);
     }   
 });
 
 app.use((err, req, res, next) => {
-    console.error(err);
-    const errorMessage = "Internal Server Error";
-    const response = {
-        error: {
-            message: errorMessage,
-            details: err.message
-        }
-    };
-    res.status(500).json(response);
+    console.error(err.stack);
+    const statusCode = err.response.status || 500;
+    res.status(statusCode).json(errorResponse);
 });
 
 app.listen(port, () => {

@@ -28,12 +28,18 @@ const Home = () => {
       },
       body: JSON.stringify({ code, logs })
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          const errorMsg = 'Failed to fetch! Status code: ' +response.status + ' (' +response.statusText + ')'
+          throw new Error(errorMsg);
+        }
+        return response.json();
+      })
       .then((data) => {
         setResponse(data.response);
       })
       .catch((error) => {
-        console.error('Error:', error);
+        setResponse(error);
       });
   };
 
