@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const logger = require('./logger');
+const logger = require('./logger/logger');
 const { promptGenerator, postPrompt } = require('./serverUtils');
 require('dotenv').config(); // Load environment variables from a .env file
 const app = express();
@@ -34,5 +34,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(port, () => {
-    logger.info(`Server is running on port ${port}`);
+    logger.info('Server is running on port: ' + port);
 });
