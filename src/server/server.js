@@ -1,7 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const logger = require('./logger/logger');
+const logger = require('./logger/logger_dev');
+//const logger = require('./logger/logger_prod');
 const { promptGenerator, postPrompt } = require('./serverUtils');
 require('dotenv').config(); // Load environment variables from a .env file
 const app = express();
