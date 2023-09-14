@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const logger = require('./logger');
 const { promptGenerator, postPrompt } = require('./serverUtils');
 require('dotenv').config(); // Load environment variables from a .env file
 const app = express();
@@ -20,17 +21,18 @@ app.post('/post', async (req, res, next) => {
             createdAt: new Date().toISOString()
         };
         res.json(response);
+        logger.info('Post successful');
     } catch (error) {
         next(error);
     }   
 });
 
 app.use((err, req, res, next) => {
-    console.error(err.stack);
+    logger.error(err.stack);
     const statusCode = err.response.status || 500;
     res.status(statusCode).json(errorResponse);
 });
 
 app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+    logger.info(`Server is running on port ${port}`);
 });
