@@ -21,7 +21,7 @@ app.post('/post', async (req, res, next) => {
             createdAt: new Date().toISOString()
         };
         res.json(response);
-        logger.info('Post successful');
+        logger.debug('OpenAI Post successful');
     } catch (error) {
         next(error);
     }   
