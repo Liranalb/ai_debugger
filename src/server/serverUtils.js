@@ -1,5 +1,5 @@
 const { Configuration, OpenAIApi } = require("openai");
-const config = require('./apiReqConfig.json'); // Load OpenAI configuration
+const config = require('../config/apiReqConfig.json'); // Load OpenAI configuration
 
 // generates the prompt for OpenAI based on code and logs
 const promptGenerator = (code, logs) => {

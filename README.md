@@ -67,7 +67,7 @@ The backend employs Node.js and Express to handle API requests and responses. It
 Key files in the backend:
 
 - **src/server/server.js**: Express app setup and API endpoints.
-- **src/server/apiReqConfig.json**: Configuration settings for API requests.
+- **/config/apiReqConfig.json**: Configuration settings for API requests.
 - **.env**: Environment variables including OPENAI_API_KEY and DEV_PORT.
 
 ## Contributing
