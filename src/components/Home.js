@@ -5,6 +5,7 @@ import InputBox from './InputBox';
 import ResponseBox from './ResponseBox';
 import SubmitButton from './SubmitBtn';
 import Card from '../ui/Card';
+import DropdownMenu from './DropdownMenu'; // Import the DropdownMenu component
 
 // Import strings and API configuration
 import strings from '../strings/strings_eng.json';
@@ -26,7 +27,7 @@ const Home = () => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ code, logs })
+      body: JSON.stringify({ code, logs }),
     })
       .then((response) => {
         if (!response.ok) {
@@ -73,6 +74,7 @@ const Home = () => {
           onChange={(event) => setLogs(event.target.value)}
         />
       </Card>
+      <DropdownMenu />
       <SubmitButton id="submit_button" buttonText={strings.submitButton} />
 
       {/* Display the response if available */}
