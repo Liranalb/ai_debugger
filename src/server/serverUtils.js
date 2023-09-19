@@ -1,14 +1,13 @@
 const { Configuration, OpenAIApi } = require("openai");
-const config = require('../config/apiReqConfig.json'); // Load OpenAI configuration
-
+const prompt_config = require('../config/prompt_config.json'); // Load OpenAI configuration
+const gpt_config = require('../config/gpt_config.json');
 // generates the prompt for OpenAI based on code and logs
 const promptGenerator = (code, logs) => {
     if (!code || !logs)
         throw new Error("Code or Logs cannot be empty!");
 
     // Concatenate prompts from configuration string and user inputs
-    return config.ACT.STEP_BY_STEP.concat(config.PRE_CODE_PROMPT, code, config.PRE_LOG_PROMPT, logs);
-    
+    return prompt_config.CODE_GUIDANCE.STEP_BY_STEP.concat(prompt_config.PRE_CODE_PROMPT, code, prompt_config.PRE_LOG_PROMPT, logs);
 };
 
 // Send a prompt to OpenAI and get a completion
@@ -20,13 +19,13 @@ const postPrompt = async (prompt) => {
 
     // Create a chat completion request to OpenAI API
     const response = await openai.createChatCompletion({
-        model: config.GPT.MODEL,
-        messages: [{"role":config.ROLE,"content":prompt}],
-        temperature: config.GPT.TEMPERATURE,
-        max_tokens: config.GPT.MAX_TOKENS,
-        top_p: config.GPT.TOP_P,
-        frequency_penalty: config.GPT.FREQUENCY_PENALTY,
-        presence_penalty: config.GPT.PRESENCE_PENALTY,
+        model: gpt_config.MODEL,
+        messages: [{"role":gpt_config.ROLE,"content":prompt}],
+        temperature: gpt_config.TEMPERATURE,
+        max_tokens: gpt_config.MAX_TOKENS,
+        top_p: gpt_config.TOP_P,
+        frequency_penalty: gpt_config.FREQUENCY_PENALTY,
+        presence_penalty: gpt_config.PRESENCE_PENALTY,
     }); 
 
     return response.data.choices[0].message.content;

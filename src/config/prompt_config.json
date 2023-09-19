@@ -1,5 +1,8 @@
 {
-    "ACT": {
+    "PRE_CODE_PROMPT": "\nMy code:\n",
+    "PRE_LOG_PROMPT": "\nMy logs:\n",
+
+    "CODE_GUIDANCE": {
         "STEP_BY_STEP": "Explain how to fix this code. Show step by step. Dont show fixed code",
         "SENIOR_DEVELOPER": "Act as a senior developer, explaining to a junior how to fix this code. Dont show fixed code",
         "SHELDON_COOPER": "Act as Sheldon Cooper, explaining how to fix this code. Use humor. Dont show fixed code",
@@ -8,17 +11,14 @@
         "J_A_R_V_I_S": "Act as J.A.R.V.I.S., explaining how to fix this code. Use humor. Dont show fixed code",
         "C_3PO": "Act as C-3PO, explaining how to fix this code. Dont show fixed code"
     },
-    "ROLE": "user",
 
-    "GPT": {
-        "MODEL": "gpt-3.5-turbo",
-        "TEMPERATURE": 0,
-        "MAX_TOKENS": 1000,
-        "TOP_P": 1.0,
-        "FREQUENCY_PENALTY": 0.0,
-        "PRESENCE_PENALTY": 0.0
-    },
-
-    "PRE_CODE_PROMPT": "\nMy code:\n",
-    "PRE_LOG_PROMPT": "\nMy logs:\n"
+    "MENU_VALUES": {
+        "Step by step": "STEP_BY_STEP",
+        "Senior Developer": "SENIOR_DEVELOPER",
+        "Sheldon Copper": "SHELDON_COOPER",
+        "Elon Musk": "ELON_MUSK",
+        "Eric Cartman": "ERIC_CARTMAN",
+        "J.A.R.V.I.S": "J_A_R_V_I_S",
+        "C-3PO": "C_3PO"
+    }
 }
