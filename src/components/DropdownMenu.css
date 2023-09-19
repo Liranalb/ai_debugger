@@ -1,0 +1,26 @@
+.dropdown-container {
+    display: flex;
+    align-items: center;
+    font: 1.3rem Inconsolata, monospace;
+  }
+  
+  .dropdown-label {
+    font-size: 35px; 
+    color: black;
+    margin: 0;
+  }
+  
+  .select-style { 
+    background-color: #DDE6ED; 
+    color: black;
+    font-size: 35px;
+    border: none;
+    outline: none;
+    cursor: pointer; 
+    font: 1.3rem Inconsolata, monospace;
+  }
+
+  .center {
+    display: flex;
+    justify-content: center;
+  }
