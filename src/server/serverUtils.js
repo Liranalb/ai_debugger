@@ -1,13 +1,17 @@
 const { Configuration, OpenAIApi } = require("openai");
-const prompt_config = require('../config/prompt_config.json'); // Load OpenAI configuration
-const gpt_config = require('../config/gpt_config.json');
+const prompt_config = require("../config/prompt_config.json"); // Load OpenAI configuration
+const gpt_config = require("../config/gpt_config.json");
 // generates the prompt for OpenAI based on code and logs
 const promptGenerator = (code, logs) => {
-    if (!code || !logs)
-        throw new Error("Code or Logs cannot be empty!");
+    if (!code || !logs) throw new Error("Code or Logs cannot be empty!");
 
     // Concatenate prompts from configuration string and user inputs
-    return prompt_config.CODE_GUIDANCE.STEP_BY_STEP.concat(prompt_config.PRE_CODE_PROMPT, code, prompt_config.PRE_LOG_PROMPT, logs);
+    return prompt_config.CODE_FLAVOR.STEP_BY_STEP.concat(
+        prompt_config.PRE_CODE_PROMPT,
+        code,
+        prompt_config.PRE_LOG_PROMPT,
+        logs
+    );
 };
 
 // Send a prompt to OpenAI and get a completion
@@ -26,7 +30,7 @@ const postPrompt = async (prompt) => {
         top_p: gpt_config.TOP_P,
         frequency_penalty: gpt_config.FREQUENCY_PENALTY,
         presence_penalty: gpt_config.PRESENCE_PENALTY,
-    }); 
+    });
 
     return response.data.choices[0].message.content;
 };
