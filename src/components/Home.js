@@ -15,6 +15,8 @@ const Home = () => {
     // States to manage input values and API response
     const [code, setCode] = useState("");
     const [logs, setLogs] = useState("");
+    const [flavor, setFlavor] = useState(""); // flavor = the filter's DropDownMenu value
+
     const [response, setResponse] = useState("");
     // Handles form submission
     const submitHandler = (event) => {
@@ -26,7 +28,7 @@ const Home = () => {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ code, logs }),
+            body: JSON.stringify({ code, logs, flavor }),
         })
             .then((response) => {
                 if (!response.ok) {
@@ -78,7 +80,10 @@ const Home = () => {
                     onChange={(event) => setLogs(event.target.value)}
                 />
             </Card>
-            <DropdownMenu />
+            <DropdownMenu 
+                value={flavor}
+                onSelectMenuItem={(menuItem) => setFlavor(menuItem)}
+            />
             <SubmitButton
                 id="submit_button"
                 buttonText={strings.submitButton}
