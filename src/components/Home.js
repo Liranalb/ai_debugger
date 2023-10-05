@@ -80,14 +80,16 @@ const Home = () => {
                     onChange={(event) => setLogs(event.target.value)}
                 />
             </Card>
-            <DropdownMenu 
-                value={flavor}
-                onSelectMenuItem={(menuItem) => setFlavor(menuItem)}
-            />
-            <SubmitButton
-                id="submit_button"
-                buttonText={strings.submitButton}
-            />
+            <div className="center">
+                <DropdownMenu 
+                    value={flavor}
+                    onSelectMenuItem={(menuItem) => setFlavor(menuItem)}
+                />
+                <SubmitButton
+                    id="submit_button"
+                    buttonText={strings.submitButton}
+                />
+            </div>
 
             {/* Display the response if available */}
             {response && (
