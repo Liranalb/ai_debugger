@@ -1,0 +1,27 @@
+.dropdown-container {
+    display: flex;
+    align-items: center;
+    font: 1.3rem Inconsolata, monospace;
+  }
+  
+  .dropdown-label {
+    font-size: 1.3rem;
+    color: black;
+    margin: 0;
+    padding: 0.5rem;
+  }
+  
+  .select-style { 
+    outline: 0;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 7px;
+    font: 1.3rem Inconsolata, monospace;
+    font-size: 20px;
+    transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+  .center {
+    display: flex;
+    justify-content: center;
+  }

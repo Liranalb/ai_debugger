@@ -12,8 +12,8 @@ const port = process.env.DEV_PORT || 3001; // Get port from environment variable
 
 app.post('/post', async (req, res, next) => {
     try {
-        const { code, logs } = req.body;
-        const prompt = promptGenerator(code, logs); // Generate the prompt for OpenAI
+        const { code, logs, flavor} = req.body;
+        const prompt = promptGenerator(code, logs, flavor); // Generate the prompt for OpenAI
         const gptResponse = await postPrompt(prompt); // Get completion from OpenAI
         
         const response = {
