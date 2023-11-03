@@ -24,6 +24,17 @@ jobs:
       - name: Build React app
         run: npm run build
 
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+
+      - name: Install EB CLI
+        run: pip install awsebcli --upgrade --user
+
+      - name: Add EB CLI to PATH
+        run: echo 'export PATH=$PATH:$HOME/.local/bin' >> $GITHUB_ENV
+
       - name: Deployment
         run: |
           # Initialize EB and deploy
