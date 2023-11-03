@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'; // Import render from testing library
 import Home from '../Home';
 import api_data from '../../config/api_config.json';
 import strings from '../../strings/strings_eng.json';
@@ -45,6 +45,7 @@ describe('Home Component Tests', () => {
         body: JSON.stringify({
           code: 'console.log("Hello, World!"); unexpected text..',
           logs: 'Uncaught SyntaxError: Unexpected identifier',
+          flavor: '', // Test with an empty flavor
         }),
       }
     );
