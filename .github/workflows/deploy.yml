@@ -35,6 +35,9 @@ jobs:
       - name: Add EB CLI to PATH
         run: echo 'export PATH=$PATH:$HOME/.local/bin' >> $GITHUB_ENV
 
+      - name: List current directory contents
+        run: ls -la
+      
       - name: Create a zip file of the build artifacts
         run: zip -r app.zip . -i build
         working-directory: ./build
