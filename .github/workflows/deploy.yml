@@ -34,7 +34,12 @@ jobs:
 
       - name: Add EB CLI to PATH
         run: echo 'export PATH=$PATH:$HOME/.local/bin' >> $GITHUB_ENV
-      
+
+      - name: Display Secrets
+        run: |
+          echo "AWS_REGION: ${{ secrets.AWS_REGION }}"
+          echo "EB_APPLICATION_NAME: ${{ secrets.EB_APPLICATION_NAME }}"
+
       - name: Deployment
         run: |
           eb init -p node.js -r ${{ secrets.AWS_REGION }} ${{ secrets.EB_APPLICATION_NAME }}
