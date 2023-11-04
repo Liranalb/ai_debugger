@@ -40,10 +40,10 @@ jobs:
       
       - name: Create a zip file of the build artifacts
         run: zip -r app.zip . build
-      
+        working-directory: ./build
+        
       - name: Deployment
-        run: |
-          # Initialize EB and deploy
+        run:
           eb init -p node.js -r ${{ secrets.AWS_REGION }} ${{ secrets.EB_APPLICATION_NAME }}
           eb use ${{ secrets.EB_ENVIRONMENT_NAME }}
           eb deploy
