@@ -39,8 +39,7 @@ jobs:
         run: ls -la
       
       - name: Create a zip file of the build artifacts
-        run: zip -r app.zip . -i build
-        working-directory: ./build
+        run: zip -r app.zip . build
       
       - name: Deployment
         run: |
