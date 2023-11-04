@@ -36,9 +36,9 @@ jobs:
         run: echo 'export PATH=$PATH:$HOME/.local/bin' >> $GITHUB_ENV
 
       - name: Create a zip file of the build artifacts
-        run: zip -r app.zip build
+        run: zip -r app.zip . -i build
         working-directory: ./build
-
+      
       - name: Deployment
         run: |
           # Initialize EB and deploy
