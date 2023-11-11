@@ -23,7 +23,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "nodemon src/server/server.js"
+    "dev": "nodemon src/server/server.js",
+    "prod": "node src/server/server.js"
   },
   "eslintConfig": {
     "extends": [
@@ -44,6 +45,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/preset-react": "^7.23.3",
     "nodemon": "^2.0.22"
   }
 }
