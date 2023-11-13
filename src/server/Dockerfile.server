@@ -1,9 +1,9 @@
 FROM node:14-alpine
 WORKDIR /app
 COPY package*.json ./
-COPY .env ./
 COPY src/server ./server
 COPY src/config ./config
+ARG OPENAI_API_KEY
+ENV OPENAI_API_KEY=$OPENAI_API_KEY
 RUN npm install
-EXPOSE 3001
 CMD ["npm", "run", "prod"]

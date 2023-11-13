@@ -26,8 +26,10 @@ The AI Debugger is a web application that helps users debug their code by levera
     git clone https://github.com/Liranalb/ai_debugger.git
     ```
 2. Navigate to the ai_debugger directory
-3. Open the .env file and replace 'YOUR_OPENAI_API_KEY' with your actual OpenAI API key.
-The .env values will be loaded as an environment variables.
+3. Set an eviroment variable for the OpenAI key.
+    ```bash
+    export OPENAI_API_KEY='YOUR_API_KEY'
+    ```
 4. Install project dependencies:
     ```bash
     npm install
