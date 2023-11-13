@@ -1,8 +1,8 @@
 const { createLogger, transports, format } = require('winston');
 const { combine, timestamp, printf, json } = format;
 
-const DEV_LOGGER_PATH = process.env.DEV_LOGGER_PATH || 'src/server/logger/logger_dev.log';
-const PROD_LOGGER_PATH = process.env.PROD_LOGGER_PATH || 'src/server/logger/logger_prod.log';
+const DEV_LOGGER_PATH = process.env.DEV_LOGGER_PATH || 'src/logger/logger_dev.log';
+const PROD_LOGGER_PATH = process.env.PROD_LOGGER_PATH || 'src/logger/logger_prod.log';
 
 // Define log levels for prod and dev, log file max size
 // And number of backup log files to keep

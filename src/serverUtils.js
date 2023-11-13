@@ -1,6 +1,6 @@
 const { Configuration, OpenAIApi } = require("openai");
-const prompt_config = require("../config/prompt_config.json"); // Load OpenAI configuration
-const gpt_config = require("../config/gpt_config.json");
+const prompt_config = require("./config/prompt_config.json"); // Load OpenAI configuration
+const gpt_config = require("./config/gpt_config.json");
 // generates the prompt for OpenAI based on code and logs
 const promptGenerator = (code, logs, flavor) => {
     if (!code || !logs) throw new Error("Code or Logs cannot be empty!");

@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const logger = require('./logger/logger');
+const logger = require('../logger/logger');
 const { promptGenerator, postPrompt } = require('./serverUtils');
 const app = express();
 app.use(bodyParser.json());
