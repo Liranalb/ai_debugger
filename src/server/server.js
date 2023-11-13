@@ -3,7 +3,6 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const logger = require('./logger/logger');
 const { promptGenerator, postPrompt } = require('./serverUtils');
-require('dotenv').config(); // Load environment variables from a .env file
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
