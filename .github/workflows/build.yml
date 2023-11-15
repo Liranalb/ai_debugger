@@ -15,5 +15,5 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build -t liran86/ai_debugger_frontend:${{ github.sha }} .
+          docker build -t ai_debugger_frontend:${{ github.sha }} -f src/config/Dockerfile .
           docker tag liran86/ai_debugger_frontend:${{ github.sha }} liran86/ai_debugger_frontend:latest
