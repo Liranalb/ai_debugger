@@ -17,9 +17,6 @@ const NavigationBar = () => {
                         <Link to={strings.navbar.links.github_address}>GitHub</Link>
                     </li>
                     <li>
-                        <Link to={strings.navbar.links.linkedin_address}>LinkedIn</Link>
-                    </li>
-                    <li>
                         <Link to={strings.navbar.links.about}>About</Link>
                     </li>
                 </ul>
